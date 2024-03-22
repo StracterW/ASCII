@@ -17,7 +17,7 @@ for i in light:
     help = ""
     symbol = "  "
     for n in i:
-        if float(n) > 0.95:
+        if float(n) > 0.9:
             symbol = lsymb[0]
         elif float(n) > 0.8:
             symbol = lsymb[1]
@@ -31,7 +31,7 @@ for i in light:
             symbol = lsymb[5]
         elif float(n) > 0.2:
             symbol = lsymb[6]
-        elif float(n) > 0.01:
+        elif float(n) > 0.1:
             symbol = lsymb[7]
         else: 
             symbol = lsymb[8]
