@@ -3,19 +3,16 @@ from PIL import Image
 import torch
 from torchvision import transforms
 
-#img = Image.open("fuchs.jpg")
-img = Image.open("zzPokeball.png")
-factor = 1
-img = img.resize(((img.size[0]//factor),(img.size[1]//factor)))
-convert_tensor = transforms.ToTensor()
+img = Image.open("image.jpg") 
+convert_tensor = transforms.ToTensor()  # convert image to tensor
 tensor = convert_tensor(img)
 try:
-    light = (tensor[0]+tensor[1]+tensor[2])/3
+    light = (tensor[0]+tensor[1]+tensor[2])/3       # brightnes of the image 
 except:
     light = tensor[0]
 file = open('symbols.txt', "w")
 # mit der Methode "w" wird die gesamte Datei überschrieben
-lsymb = ["##","QQ","HH","OO","II","ii","++","==","::","^^",".."]
+lsymb = ["##","QQ","HH","OO","II","ii","++","==","::","^^",".."]   # symbols for specific brightness
 file.write("")
 for i in light:
     help = ""
@@ -54,11 +51,11 @@ from pygments.formatters import ImageFormatter
 import pygments.lexers
 
 lexer = pygments.lexers.TextLexer()
-png = pygments.highlight(Path('symbols.txt').read_text(), lexer, ImageFormatter(line_numbers=False))
+png = pygments.highlight(Path('symbols.txt').read_text(), lexer, ImageFormatter(line_numbers=False))     #text file to png
 Path('output.png').write_bytes(png)
 
 import cv2
 
 image = cv2.imread('output.png')
 invert = cv2.bitwise_not(image)
-cv2.imwrite('ZZpokeball.jpg', invert)
+cv2.imwrite('ZZpokeball.jpg', invert)             # switch white and black
